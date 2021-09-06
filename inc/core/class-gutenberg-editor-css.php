@@ -354,7 +354,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 			}
 
 			if ( astra_wp_version_compare( '5.8', '>=' ) ) {
-				$desktop_css[ '.edit-post-visual-editor__content-area > div' ] = array(
+				$desktop_css['.edit-post-visual-editor__content-area > div'] = array(
 					'background' => 'inherit !important',
 				);
 			}
