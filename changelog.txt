@@ -1,3 +1,6 @@
+v3.7.1 (Unreleased)
+- Fix: Gutenberg Editor content area showing white background color when Full screen mode is active.
+
 v3.6.9
 - Improvement : Gutenberg editor overall UI/UX improved.
 - Improvement : Font size '0' will applicable for the fonts.
