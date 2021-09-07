@@ -109,6 +109,8 @@ if ( ! class_exists( 'Astra_Theme_Background_Updater' ) ) {
 			'3.6.9' => array(
 				'astra_zero_font_size_comp',
 				'astra_unset_builder_elements_underline',
+			),
+			'3.7.1' => array(
 				'astra_improve_gutenberg_editor_ui',
 			),
 		);
