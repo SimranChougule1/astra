@@ -1,7 +1,6 @@
 import {
 	createURL,
 	createNewPost,
-	setPostContent,
 	publishPost,
 } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
@@ -20,10 +19,9 @@ describe( 'post title size in the customizer', () => {
         };
 
         await setCustomize( postTitle );
-        await createNewPost( { postType: 'post', title: 'Typography Test' } );
-		await setPostContent( TPOGRAPHY_TEST_POST_CONTENT );
+        await createNewPost( { postType: 'post', title: 'hello world' } );
 		await publishPost();
-		await page.goto( createURL( '/typography-test/' ), {
+		await page.goto( createURL( '/hello-world/' ), {
 			waitUntil: 'networkidle0',
 
         await page.waitForSelector( '.ast-single-post .entry-title, .page-title' );
