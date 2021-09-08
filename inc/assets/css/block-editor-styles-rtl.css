@@ -723,6 +723,10 @@ h6 {
   margin: -0.5em 0 0 -0.5em;
 }
 
+.edit-post-visual-editor .wp-block.wp-block-shortcode {
+  padding: 20px;
+}
+
 .wp-block-spacer .components-resizable-box__container {
   background: #f5f5f5;
 }
