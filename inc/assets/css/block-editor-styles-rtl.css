@@ -724,6 +724,14 @@ h6 {
   margin: -0.5em 0 0 -0.5em;
 }
 
+.edit-post-visual-editor .components-button {
+  color: #1e1e1e;
+}
+
+.edit-post-visual-editor .components-button.is-pressed {
+  color: #ffffff;
+}
+
 .components-popover .components-popover__content {
   min-width: 290px;
 }
