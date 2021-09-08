@@ -723,6 +723,11 @@ h6 {
   margin: -0.5em -0.5em 0 0;
 }
 
+.wp-block ol, .wp-block ul {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .edit-post-visual-editor .wp-block.wp-block-shortcode {
   padding: 20px;
 }
@@ -760,4 +765,8 @@ h6 {
 
 .components-popover .components-popover__content {
   min-width: 290px;
+}
+
+.wp-block-latest-comments .wp-block-latest-comments {
+  margin-left: 0;
 }
