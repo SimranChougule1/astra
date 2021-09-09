@@ -179,7 +179,9 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 			$selection_text_color = ( 'transparent' === $highlight_theme_color ) ? '' : $highlight_theme_color;
 
 			// Gutenberg editor improvement.
+			/** @psalm-suppress InvalidScalarArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 			$improve_gb_ui = astra_get_option( 'improve-gb-editor-ui', true );
+			/** @psalm-suppress InvalidScalarArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 
 			$css = '';
 

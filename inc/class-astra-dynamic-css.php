@@ -196,7 +196,9 @@ if ( ! class_exists( 'Astra_Dynamic_CSS' ) ) {
 			$is_wp_5_8_support_enabled = self::is_block_editor_support_enabled();
 
 			// Gutenberg editor improvement.
+			/** @psalm-suppress InvalidScalarArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 			$improve_gb_ui = astra_get_option( 'improve-gb-editor-ui', true );
+			/** @psalm-suppress InvalidScalarArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 
 			if ( false === Astra_Builder_Helper::$is_header_footer_builder_active ) {
 				// Footer Bar Colors.
