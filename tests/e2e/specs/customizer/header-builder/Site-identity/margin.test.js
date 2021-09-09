@@ -2,7 +2,7 @@ import { createURL } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
 
 describe( 'Site Identity margin settings in the customizer', () => {
-	it( 'Spacing should apply corectly', async () => {
+	it( 'spacing should apply corectly', async () => {
 		const siteTaglineSpacing = {
 			'title_tagline-margin': {
 				'desktop'    : {
