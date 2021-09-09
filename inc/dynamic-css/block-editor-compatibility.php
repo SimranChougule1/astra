@@ -63,9 +63,7 @@ function astra_block_editor_compatibility_css( $dynamic_css ) {
 		$dynamic_css .= Astra_Enqueue_Scripts::trim_css( $compatibility_css );
 	}
 
-	/** @psalm-suppress UndefinedFunction */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
-	if ( astra_improve_gutenberg_blocks_ui() ) {
-		/** @psalm-suppress UndefinedFunction */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
+	if ( astra_get_option( 'improve-gb-editor-ui', true ) ) {
 		$is_site_rtl = is_rtl();
 
 		$editor_improvement_css = '
