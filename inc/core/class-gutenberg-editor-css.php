@@ -312,15 +312,13 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 				),
 			);
 
+			$background_style_data = astra_get_responsive_background_obj( $box_bg_obj, 'desktop' );
+			if ( empty( $background_style_data ) ) {
+				$background_style_data = array(
+					'background-color' => '#ffffff',
+				);
+			}
 			if ( astra_wp_version_compare( '5.7', '>=' ) ) {
-				$base_background_color = astra_get_responsive_background_obj( $box_bg_obj, 'desktop' );
-				if ( empty( $base_background_color ) ) {
-					$background_style_data = array(
-						'background-color' => '#ffffff',
-					);
-				} else {
-					$background_style_data = $base_background_color;
-				}
 
 				$desktop_css['.edit-post-visual-editor']                            = array(
 					'padding'     => '20px',
@@ -357,6 +355,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 				$desktop_css['.edit-post-visual-editor__content-area > div'] = array(
 					'background' => 'inherit !important',
 				);
+				$desktop_css['.ast-page-builder-template .editor-styles-wrapper, .ast-plain-container .editor-styles-wrapper'] = $background_style_data;
 			}
 
 			if ( ( ( ! in_array( 'single-title-meta', $single_post_title ) ) && ( 'post' === get_post_type() ) ) || ( 'disabled' === $title_enabled_from_meta ) ) {
