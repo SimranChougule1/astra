@@ -5,27 +5,27 @@ describe( 'Site Identity margin settings in the customizer', () => {
 	it( 'spacing should apply corectly', async () => {
 		const siteTaglineSpacing = {
 			'title_tagline-margin': {
-				desktop : {
-					top : 10,
-					right : 15,
-					bottom : 20,
-					left : 25,
+				desktop: {
+					top: 10,
+					right: 15,
+					bottom: 20,
+					left: 25,
 				},
-				tablet : {
-					top : '',
-					right : '',
-					bottom : '',
-					left : '',
+				tablet: {
+					top: '',
+					right: '',
+					bottom: '',
+					left: '',
 				},
-				mobile : {
-					top : '',
-					right : '',
-					bottom : '',
-					left : '',
+				mobile: {
+					top: '',
+					right: '',
+					bottom: '',
+					left: '',
 				},
-				'desktop-unit' : 'px',
-				'tablet-unit' : 'px',
-				'mobile-unit' : 'px',
+				'desktop-unit': 'px',
+				'tablet-unit': 'px',
+				'mobile-unit': 'px',
 			},
 		};
 
@@ -64,6 +64,5 @@ describe( 'Site Identity margin settings in the customizer', () => {
 		} ).cssValueToBe(
 			`${ siteTaglineSpacing[ 'title_tagline-margin' ].desktop.left }${ siteTaglineSpacing[ 'title_tagline-margin' ][ 'desktop-unit' ] }`,
 		);
-
 	} );
 } );
