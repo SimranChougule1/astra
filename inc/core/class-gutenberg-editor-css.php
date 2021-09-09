@@ -430,8 +430,8 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 				$search_button_selector       = $is_support_wp_5_8 ? ', .block-editor-writing-flow .wp-block-search .wp-block-search__inside-wrapper .wp-block-search__button' : '';
 				$search_button_hover_selector = $is_support_wp_5_8 ? ', .block-editor-writing-flow .wp-block-search .wp-block-search__inside-wrapper .wp-block-search__button:hover, .block-editor-writing-flow .wp-block-search .wp-block-search__inside-wrapper .wp-block-search__button:focus' : '';
 
-				$file_block_button_selector       = $improve_gb_ui ? ', .block-editor-writing-flow .wp-block-file .wp-block-file__button' : '';
-				$file_block_button_hover_selector = $improve_gb_ui ? ', .block-editor-writing-flow .wp-block-file .wp-block-file__button:hover, .block-editor-writing-flow .wp-block-file .wp-block-file__button:focus' : '';
+				$file_block_button_selector       = ( true === $improve_gb_ui ) ? ', .block-editor-writing-flow .wp-block-file .wp-block-file__button' : '';
+				$file_block_button_hover_selector = ( true === $improve_gb_ui ) ? ', .block-editor-writing-flow .wp-block-file .wp-block-file__button:hover, .block-editor-writing-flow .wp-block-file .wp-block-file__button:focus' : '';
 
 				$button_desktop_css = array(
 					/**
@@ -465,7 +465,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 					),
 				);
 
-				if ( $improve_gb_ui ) {
+				if ( true === $improve_gb_ui ) {
 					$button_desktop_css['.block-editor-writing-flow .wp-block-file__content-wrapper'] = array(
 						'display'         => 'flex',
 						'align-items'     => 'center',
@@ -778,7 +778,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 			 *
 			 * @since x.x.x
 			 */
-			if ( $improve_gb_ui ) {
+			if ( true === $improve_gb_ui ) {
 
 				$gb_editor_core_blocks_ui_css = array(
 					'.block-editor-block-list__layout > .wp-block-group, .block-editor-block-list__layout > .wp-block-cover' => array(
@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 					),
 				);
 
-				if ( ! $improve_gb_ui ) {
+				if ( false === $improve_gb_ui ) {
 					$gtn_full_wide_image_css['.ast-separate-container .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block[data-align="full"], .ast-plain-container .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .wp-block[data-align="full"]'] = array(
 						'margin-left'  => 'auto',
 						'margin-right' => 'auto',
@@ -1149,7 +1149,7 @@ if ( ! class_exists( 'Gutenberg_Editor_CSS' ) ) :
 
 			$css .= astra_parse_css( $gtn_full_wide_image_css );
 
-			if ( $improve_gb_ui ) {
+			if ( true === $improve_gb_ui ) {
 				$compatibility_css = '
 				.wp-block-cover__inner-container .wp-block {
 					color: #ffffff;
