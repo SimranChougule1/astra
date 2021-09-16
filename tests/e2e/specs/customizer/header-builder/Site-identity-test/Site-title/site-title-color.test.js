@@ -1,8 +1,8 @@
-import { setCustomize } from "C:/laragon/www/Astra/wp-content/themes/astra/tests/e2e/utils/set-customize";
+import { setCustomize } from ' ../../../../../utils/set-customize';
 import { createURL } from '@wordpress/e2e-test-utils';
 
 describe( 'Site Title color settings in the customizer', () => {
-	it( 'site title color should apply corectly', async () => {
+	it( 'site title color should apply correctly', async () => {
 		const sitetitleColor = {
             'header-color-site-title': 'rgb(226, 21, 21)',
         };
@@ -17,6 +17,7 @@ describe( 'Site Title color settings in the customizer', () => {
         await expect( {
 			selector: '.ast-site-identity .site-title a ',
 			property: 'color',
+
 		} ).cssValueToBe(
 			`${ sitetitleColor[ 'header-color-site-title' ] }`,
 		);
