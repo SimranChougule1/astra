@@ -1,15 +1,13 @@
 import { createURL } from '@wordpress/e2e-test-utils';
-import { setCustomize } from '../../../../utils/set-customize';
-
+import { setCustomize } from "C:/laragon/www/Astra/wp-content/themes/astra/tests/e2e/utils/set-customize";
 describe( 'Site Title Typography settings and color settings in the customizer', () => {
 	it( 'site title typography and color should apply corectly', async () => {
 		const sitetitleTypography = {
             'body-font-family': 'Great Vibes',
-
 			'body-text-transform': 'lowercase',
 			'font-size-site-title': {
 				desktop: 72,
-                'desktop-unit': 'px',
+            	'desktop-unit': 'px',
             },
         };
         await setCustomize( sitetitleTypography );
