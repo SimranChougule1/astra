@@ -1,6 +1,6 @@
 import { createURL } from '@wordpress/e2e-test-utils';
 import { setCustomize } from "../../../utils/set-customize";
-describe( 'primary menu font settings in the customizer', () => {
+/*describe( 'primary menu font settings in the customizer', () => {
 	it( 'font setting should apply correctly', async () => {
         const primarymenuFont = {
                 'header-menu1-font-family': 'Fruktur',
@@ -58,4 +58,76 @@ describe( 'primary menu font settings in the customizer', () => {
 		);
        
 	} );
-} );
+} );*/
+
+
+describe( 'Default Position of the Sidebar for pages under the Customizer', () => {
+it( 'Position of Sidebar for page as LEFT should apply correctly', async () => {
+const pageSidebar = {
+'single-page-sidebar-layout': 'left-sidebar',
+};
+await setCustomize( pageSidebar );
+				await createNewPost( {
+                    postType: 'page',
+                    title: 'Test-page',
+                });
+                await publishPost();
+                await page.goto( createURL( 'Test-page' ), {
+                    waitUntil: 'networkidle0',
+                });
+                await page.waitForSelector( '.ast-separate-container.ast-left-sidebar #secondary' );
+                await expect( {
+                    selector: '.ast-separate-container.ast-left-sidebar #secondary',
+                    property: '',
+                }).cssValueToBe( `` );  
+        });
+
+        it( 'Position of Sidebar for pages as RIGHT should apply correctly', async () => {
+            const pageSidebar = {
+            'single-page-sidebar-layout': 'right-sidebar',
+            };
+                await setCustomize( pageSidebar );
+                await page.goto( createURL( 'Test-page' ), {
+                    waitUntil: 'networkidle0',
+                });
+                await page.waitForSelector( '.ast-separate-container.ast-right-sidebar #secondary' );
+                await expect( {
+                    selector: '.ast-separate-container.ast-right-sidebar #secondary',
+                    property: '',
+                }).cssValueToBe( `` );  
+        });
+
+        it( 'Position of Sidebar for pages as NO-Sidebar should apply correctly', async () => {
+            const pageSidebar = {
+            'single-page-sidebar-layout': 'no-sidebar',
+            };
+                await setCustomize( pageSidebar );
+                await page.goto( createURL( 'Test-page' ), {
+                    waitUntil: 'networkidle0',
+                });
+                await page.waitForSelector( '.ast-no-sidebar' );
+                await expect( {
+                    selector: '.ast-no-sidebar',
+                    property: '',
+                }).cssValueToBe( `` );  
+        });
+
+        it( 'Default Position of Sidebar for pages as LEFT should apply correctly', async () => {
+            const pageSidebar = {
+            'single-page-sidebar-layout': 'default',
+            'site-sidebar-layout': 'left-sidebar'
+            };
+                await setCustomize( pageSidebar );
+                await page.goto( createURL( '/' ), {
+                    waitUntil: 'networkidle0',
+                });
+                await page.goto( createURL( 'Test-page' ), {
+                    waitUntil: 'networkidle0',
+                });
+                await page.waitForSelector( '.ast-separate-container.ast-left-sidebar #secondary' );
+                await expect( {
+                    selector: '.ast-separate-container.ast-left-sidebar #secondary',
+                    property: '',
+                }).cssValueToBe( `` );  
+        });
+    });
