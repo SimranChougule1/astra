@@ -1,8 +1,8 @@
-import { createURL } from "@wordpress/e2e-test-utils";
+import { createURL } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../utils/set-customize';
 describe( 'copyright alignment settings in the customizer', () => {
     it( 'copyright alignment should apply correctly', async () => {
-            const copyrightAlignment = {
+            	 const copyrightAlignment = {
                 'footer-copyright-alignment':'center',
             };
 
