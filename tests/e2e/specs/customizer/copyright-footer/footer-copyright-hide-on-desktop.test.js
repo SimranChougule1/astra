@@ -7,7 +7,7 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
         };
             
             await setCustomize( copyrighthideonDesktop );
-            await page.goto( createURL( 'sample' ), {
+            await page.goto( createURL( '/' ), {
             waitUntil: 'networkidle0',
             } );
             await page.evaluate( () => {
