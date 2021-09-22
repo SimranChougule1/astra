@@ -3,7 +3,29 @@ import { setCustomize } from '../../../utils/set-customize';
 describe(' Copyright Margin setting in customizer', () => {
     it( 'top menu margin style should apply correctly', async () => {
 		const  copyrightmargin= {
-            'section-footer-copyright-margin': '60px',
+            'section-footer-copyright-margin': {
+                'desktop': {
+                    top: 50,
+                    right: 50,
+                    bottom: 50,
+                    left: 50,
+                },
+                'tablet': {
+                    top: 50,
+                    right: 50,
+                    bottom: 50,
+                    left: 50, 
+                },
+                'mobile': {
+                    top: 50,
+                    right: 50,
+                    bottom: 50,
+                    left: 50, 
+                },
+                'desktop-unit': 'px',
+				'tablet-unit': 'px',
+				'mobile-unit': 'px',
+            },
         };
         await setCustomize(  copyrightmargin );
 
@@ -14,65 +36,9 @@ describe(' Copyright Margin setting in customizer', () => {
 
         await expect( {
 			selector: '.ast-footer-copyright',
-			property: 'margin-top',
-		} ).cssValueToBe(
-			`${  copyrightmargin[ 'section-footer-copyright-margin' ]}`,
+			property: '',
+		} ).cssValueToBe(``,
+			//`${  copyrightmargin[ 'section-footer-copyright-margin' ]}`,
 		);
 	} );
 } );
-
-/*it( 'top menu margin style should apply correctly', async () => {
-    const  copyrightmargin= {
-        'section-footer-copyright-margin': '60px',
-    };
-    await setCustomize(  copyrightmargin );
-
-    await page.goto( createURL( 'sample' ), {
-        waitUntil: 'networkidle0',
-    } );
-    await page.waitForSelector( '.ast-footer-copyright' );
-
-    await expect( {
-        selector: '.ast-footer-copyright',
-        property: 'margin-bottom',
-    } ).cssValueToBe(
-        `${  copyrightmargin[ 'section-footer-copyright-margin' ]}`,
-    );
-} );*/
-
-it( 'top menu margin style should apply correctly', async () => {
-    const  copyrightmargin= {
-        'section-footer-copyright-margin': '60px',
-    };
-    await setCustomize(  copyrightmargin );
-
-    await page.goto( createURL( '/' ), {
-        waitUntil: 'networkidle0',
-    } );
-    await page.waitForSelector( '.ast-footer-copyright' );
-
-    await expect( {
-        selector: '.ast-footer-copyright',
-        property: 'margin-right',
-    } ).cssValueToBe(
-        `${  copyrightmargin[ 'section-footer-copyright-margin' ]}`,
-    );
-} );
-it( 'top menu margin style should apply correctly', async () => {
-    const  copyrightmargin= {
-        'section-footer-copyright-margin': '60px',
-    };
-    await setCustomize(  copyrightmargin );
-
-    await page.goto( createURL( '/' ), {
-        waitUntil: 'networkidle0',
-    } );
-    await page.waitForSelector( '.ast-footer-copyright' );
-
-    await expect( {
-        selector: '.ast-footer-copyright',
-        property: 'margin-left',
-    } ).cssValueToBe(
-        `${  copyrightmargin[ 'section-footer-copyright-margin' ]}`,
-    );
-});
