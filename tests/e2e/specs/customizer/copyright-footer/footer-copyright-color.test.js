@@ -1,4 +1,4 @@
-import { createURL } from "@wordpress/e2e-test-utils";
+import { createURL} from "@wordpress/e2e-test-utils";
 import { setCustomize } from '../../../utils/set-customize';
 describe( 'copyright color settings in the customizer', () => {
     it( 'copyright text color should apply correctly', async () => {
@@ -24,5 +24,3 @@ describe( 'copyright color settings in the customizer', () => {
 
     });
 })
-
-
