@@ -1,10 +1,12 @@
 import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
+import { FALSE } from 'node-sass';
 import { setCustomize } from '../../../utils/set-customize';
 
 describe( 'Blog Archive option under the customizer', () => {
 	it( 'Blog Archive post structure meta options should apply correctly', async () => {
         const blogmeta ={
-            'blog-post-structure': 'title-meta' 
+            'blog-post-structure': 'title-meta', 
+				
 		};
 		//await setCustomize(blogmeta);
         await createNewPost( {
@@ -14,7 +16,7 @@ describe( 'Blog Archive option under the customizer', () => {
 		} );
 		await publishPost();
 
-        await page.goto( createURL( '2021/09' ), {
+        await page.goto( createURL( '2021/09' ), {//2021/09
 			waitUntil: 'networkidle0',
 		} );
 		await page.waitForSelector('.ast-separate-container .ast-article-post ');
