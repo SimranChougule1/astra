@@ -23,5 +23,5 @@ describe( 'copyright alignment settings in the customizer', () => {
                 selector: '.ast-builder-layout-element',
                 property: '',
             } ).cssValueToBe( ``);
-                 //${copyrightAlignment['footer-copyright-alignment']}
+                 
 }); });
