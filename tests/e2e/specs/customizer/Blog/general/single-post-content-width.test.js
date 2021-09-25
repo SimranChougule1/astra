@@ -1,5 +1,5 @@
 import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
-import { setCustomize } from '../../../utils/set-customize';
+import { setCustomize } from '../../../../utils/set-customize';
 describe( ' Single post content width settings in the customizer', () => {
 	it( 'Single post default width should apply correctly', async () => {
         const contentwidth = {
@@ -32,7 +32,6 @@ it( 'Blog Archive custom width should apply correctly', async () => {
     await createNewPost( {
         postType: 'post',
         title: 'sample-page',
-        content:'blog post created',
     } );
     await publishPost();
 

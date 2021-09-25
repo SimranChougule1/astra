@@ -1,0 +1,45 @@
+import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
+import { setCustomize } from '../../../../utils/set-customize';
+describe( 'Section baclground color option under the customizer', () => {
+	it( 'Section background color option should apply correctly', async () => {
+        const backgroundcolor={
+            'enable-related-posts': 'true',
+            'related-posts-background-color': 'rgb(164, 142, 142)',
+        };
+        await setCustomize(backgroundcolor );
+        await createNewPost( {
+            postType: 'post',
+            title: 'sample-post',
+                
+        } );
+        await publishPost();
+        
+        await createNewPost( {
+            postType: 'post',
+            title: 'test-post',
+                
+        } );
+        await publishPost();
+        
+        await page.goto( createURL( 'test-post' ), {
+            waitUntil: 'networkidle0',
+        } );
+
+        await page.evaluate( () => {
+            window.scrollBy(0, window.innerHeight);
+        });
+
+        await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
+        await expect( {
+            selector: '.ast-separate-container .ast-single-related-posts-container ',
+            property: '',
+        } ).cssValueToBe(``); 
+    
+        await expect( {
+            selector: '.ast-single-related-posts-container',
+            property: 'background-color',
+        } ).cssValueToBe(`${ backgroundcolor[ 'related-posts-background-color' ] }`,
+		);
+
+    })
+});
