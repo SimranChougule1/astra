@@ -29,6 +29,16 @@ describe( 'copyright font size settings in the customizer', () => {
             selector: '.ast-footer-copyright',
             property: 'font-size',
         } ).cssValueToBe(`${ copyrightfontsize [ 'font-size-section-footer-copyright' ].desktop }${ copyrightfontsize [ 'font-size-section-footer-copyright' ]['desktop-unit'] }`,);
+        
+        await expect( {
+            selector: '.ast-footer-copyright',
+            property: 'font-size',
+        } ).cssValueToBe(`${ copyrightfontsize [ 'font-size-section-footer-copyright' ].tablet }${ copyrightfontsize [ 'font-size-section-footer-copyright' ]['tablet-unit'] }`,);
+
+        await expect( {
+            selector: '.ast-footer-copyright',
+            property: 'font-size',
+        } ).cssValueToBe(`${ copyrightfontsize [ 'font-size-section-footer-copyright' ].mobile }${ copyrightfontsize [ 'font-size-section-footer-copyright' ]['mobile-unit'] }`,);
 
     });
 })
