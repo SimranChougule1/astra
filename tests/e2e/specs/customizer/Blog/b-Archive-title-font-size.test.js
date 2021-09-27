@@ -21,14 +21,27 @@ describe( 'Blog Archive option under the customizer', () => {
     } );
     await publishPost();
 
-    await page.goto( createURL( '2021/09' ), {
+    await page.goto( createURL( '/author/admin' ), {
         waitUntil: 'networkidle0',
     } );
-    await page.waitForSelector('.ast-archive-description .ast-archive-title  ');
+    await page.waitForSelector('.ast-archive-description .ast-archive-title ');
     await expect( {
         selector: '.ast-archive-description .ast-archive-title  ',
         property: 'font-size',
     } ).cssValueToBe(`${ btitlefontsize [ 'font-size-archive-summary-title' ].desktop }${ btitlefontsize [ 'font-size-archive-summary-title' ]['desktop-unit'] }`,);
+
+    await page.waitForSelector('.ast-archive-description .ast-archive-title  ');
+    await expect( {
+        selector: '.ast-archive-description .ast-archive-title  ',
+        property: 'font-size',
+    } ).cssValueToBe(`${ btitlefontsize [ 'font-size-archive-summary-title' ].tablet}${ btitlefontsize [ 'font-size-archive-summary-title' ]['tablet-unit'] }`,);
+
+    await page.waitForSelector('.ast-archive-description .ast-archive-title  ');
+    await expect( {
+        selector: '.ast-archive-description .ast-archive-title  ',
+        property: 'font-size',
+    } ).cssValueToBe(`${ btitlefontsize [ 'font-size-archive-summary-title' ].mobile }${ btitlefontsize [ 'font-size-archive-summary-title' ]['mobile-unit'] }`,);
+
 
 });
 }) 

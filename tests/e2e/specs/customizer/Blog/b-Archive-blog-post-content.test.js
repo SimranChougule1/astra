@@ -9,45 +9,45 @@ describe( 'Blog Archive post content option under the customizer', () => {
     await setCustomize( postcontent );
     await createNewPost( {
         postType: 'post',
-        title: 'blog-page',
+        title: 'blog-post',
         content:'Full Content is applying properly',
         excerpt: 'Excerpt is applying properly',
     } );
     await publishPost();
 
-    await page.goto( createURL( '2021/09' ), {
+    await page.goto( createURL( '/' ), {
         waitUntil: 'networkidle0',
     } );
     await page.waitForSelector('.ast-separate-container .ast-article-post  ');
     await expect( {
         selector: '.ast-separate-container .ast-article-post  ',
         property: '',
-    } ).cssValueToBe(``); 
-       
+    } ).cssValueToBe(`${postcontent[ 'blog-post-content' ] }`); 
+    
 });
+
+    it( 'Blog Archive full content options should apply correctly', async () => {
+        const postcontent ={
+            'blog-post-content': 'full-content',
+        };
+        await setCustomize( postcontent );
+        await createNewPost( {
+            postType: 'post',
+            title: 'blog-post',
+            content:'Full Content is applying properly',
+            excerpt: 'Excerpt is applying properly',
+         } );
+        await publishPost();
+
+        await page.goto( createURL( '/' ), {
+        waitUntil: 'networkidle0',
+        } );
+        await page.waitForSelector('.ast-separate-container .ast-article-post  ');
+        await expect( {
+            selector: '.ast-separate-container .ast-article-post  ',
+            property: '',
+        } ).cssValueToBe(`${postcontent[ 'blog-post-content' ] }`);
+    });
+
 })
-
-it( 'Blog Archive full content options should apply correctly', async () => {
-    const postcontent ={
-        'blog-post-content': 'full-content',
-
-    };
-    await setCustomize( postcontent );
-    await createNewPost( {
-    postType: 'post',
-    title: 'blog-page',
-    content:'Full Content is applying properly',
-    excerpt: 'Excerpt is applying properly',
-    } );
-    await publishPost();
-
-    await page.goto( createURL( '2021/09' ), {
-    waitUntil: 'networkidle0',
-    } );
-    await page.waitForSelector('.ast-separate-container .ast-article-post  ');
-    await expect( {
-    selector: '.ast-separate-container .ast-article-post  ',
-    property: '',
-    } ).cssValueToBe(``);
-});
    
