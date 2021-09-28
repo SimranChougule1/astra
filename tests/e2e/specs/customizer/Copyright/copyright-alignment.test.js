@@ -1,5 +1,6 @@
 import { createURL } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../utils/set-customize';
+import { setBrowserViewport } from '@wordpress/e2e-test-utils';
     describe( 'copyright alignment settings in the customizer', () => {
         it( 'copyright alignment should apply correctly', async () => {
             const copyrightAlignment = {
@@ -13,30 +14,36 @@ import { setCustomize } from '../../../utils/set-customize';
             await page.goto( createURL( '/' ), {
                 waitUntil: 'networkidle0',
             } );
-        
+
             await page.evaluate( () => {
                 window.scrollBy(0, window.innerHeight);
             });
 
-                
+
             await page.waitForSelector( '.ast-footer-copyright' );
+
+            await setBrowserViewport( 'large' );
             await expect( {
                 selector: '.ast-footer-copyright',
                 property: 'text-align',
             } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].desktop}`,);
 
             await page.waitForSelector( '.ast-footer-copyright' );
+
+            await setBrowserViewport( 'medium' );
             await expect( {
                 selector: '.ast-footer-copyright',
                 property: 'text-align',
             } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].tablet}`,);
 
             await page.waitForSelector( '.ast-footer-copyright' );
+
+            await setBrowserViewport( 'small' );
             await expect( {
                 selector: '.ast-footer-copyright',
                 property: 'text-align',
             } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].mobile}`,);
-        
+
         }); 
 
         it( 'copyright alignment should apply correctly', async () => {
@@ -51,25 +58,31 @@ import { setCustomize } from '../../../utils/set-customize';
                 await page.goto( createURL( '/' ), {
                     waitUntil: 'networkidle0',
                 } );
-        
+
                 await page.evaluate( () => {
                     window.scrollBy(0, window.innerHeight);
                 });
 
-                //for Desktop
+                
                 await page.waitForSelector( '.ast-footer-copyright' );
+
+                await setBrowserViewport( 'large' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
                 } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].desktop}`,);
 
                 await page.waitForSelector( '.ast-footer-copyright' );
+
+                await setBrowserViewport( 'medium' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
                 } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].tablet}`,);
 
                 await page.waitForSelector( '.ast-footer-copyright' );
+
+                await setBrowserViewport( 'small' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
@@ -88,29 +101,35 @@ import { setCustomize } from '../../../utils/set-customize';
                 await page.goto( createURL( '/' ), {
                     waitUntil: 'networkidle0',
                 } );
-        
+
                 await page.evaluate( () => {
                     window.scrollBy(0, window.innerHeight);
                 });
 
-                    //for Desktop
+                    
                 await page.waitForSelector( '.ast-footer-copyright' );
+
+                await setBrowserViewport( 'large' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
                 } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].desktop}`,);
 
                 await page.waitForSelector( '.ast-footer-copyright' );
+
+                await setBrowserViewport( 'medium' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
                 } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].tablet}`,);
 
                 await page.waitForSelector( '.ast-footer-copyright' );
+                
+                await setBrowserViewport( 'small' );
                 await expect( {
                     selector: '.ast-footer-copyright',
                     property: 'text-align',
                 } ).cssValueToBe(`${ copyrightAlignment [ 'footer-copyright-alignment' ].mobile}`,);
-        
+
         }); 
-    })
+    }) 
