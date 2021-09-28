@@ -1,6 +1,6 @@
-
 import { createURL } from "@wordpress/e2e-test-utils";
-import { setCustomize } from '../../../utils/set-customize';
+import { setCustomize } from '../../../../utils/set-customize';
+import { setBrowserViewport } from '@wordpress/e2e-test-utils';
 describe( 'copyright hide on desktop settings in the customizer', () => {
     it( 'copyright hide on desktop setting should apply correctly', async () => {
         const copyrighthideonDesktop = {
@@ -15,6 +15,7 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
         });
         await page.waitForSelector( '.site-below-footer-wrap[data-section="section-below-footer-builder' );
 
+        await setBrowserViewport( 'large' );
         await expect( {
             selector: '.site-below-footer-wrap[data-section="section-below-footer-builder',
             property: 'display',
@@ -25,7 +26,7 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
         const copyrighthideonTablet = {
             'section-footer-copyright-hide-tablet': 'grid', 
         };
-    
+
         await setCustomize( copyrighthideonTablet );
         await page.goto( createURL( '/' ), {
             waitUntil: 'networkidle0',
@@ -34,7 +35,8 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
                 window.scrollBy(0, window.innerHeight);
         });
         await page.waitForSelector( '.site-below-footer-wrap[data-section="section-below-footer-builder' );
-    
+
+        await setBrowserViewport( 'medium' );
         await expect( {
             selector: '.site-below-footer-wrap[data-section="section-below-footer-builder',
             property: 'display',
@@ -45,7 +47,7 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
         const copyrighthideonMobile = {
             'section-footer-copyright-hide-mobile': 'grid', 
         };
-    
+
         await setCustomize( copyrighthideonMobile );
         await page.goto( createURL( '/' ), {
         waitUntil: 'networkidle0',
@@ -54,12 +56,11 @@ describe( 'copyright hide on desktop settings in the customizer', () => {
             window.scrollBy(0, window.innerHeight);
         });
         await page.waitForSelector( '.site-below-footer-wrap[data-section="section-below-footer-builder' );
-    
+        
+        await setBrowserViewport( 'small' );
         await expect( {
                 selector: '.site-below-footer-wrap[data-section="section-below-footer-builder',
                 property: 'display',
         } ).cssValueToBe(`${ copyrighthideonMobile [ 'section-footer-copyright-hide-mobile']}`,);
     });
-
-
 })
