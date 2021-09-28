@@ -29,12 +29,7 @@ describe( 'Section baclground color option under the customizer', () => {
             window.scrollBy(0, window.innerHeight);
         });
 
-        await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
-        await expect( {
-            selector: '.ast-separate-container .ast-single-related-posts-container ',
-            property: '',
-        } ).cssValueToBe(``); 
-    
+        await page.waitForSelector('.ast-single-related-posts-container');
         await expect( {
             selector: '.ast-single-related-posts-container',
             property: 'background-color',

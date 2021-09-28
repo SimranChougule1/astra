@@ -1,3 +1,4 @@
+import { setBrowserViewport } from '@wordpress/e2e-test-utils';
 import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
 describe( 'Post title font option under the customizer', () => {
@@ -9,7 +10,7 @@ describe( 'Post title font option under the customizer', () => {
             'related-posts-title-font-weight': '400',
             'related-posts-title-font-size': {
                 desktop: 50,
-				tablet: 22,
+				tablet: 50,
 				mobile: 18,
 				'desktop-unit': 'px',
 				'tablet-unit': 'px',
@@ -28,6 +29,7 @@ describe( 'Post title font option under the customizer', () => {
         await createNewPost( {
             postType: 'post',
             title: 'test-post',
+            
                 
         } );
         await publishPost();
@@ -37,15 +39,10 @@ describe( 'Post title font option under the customizer', () => {
         } );
 
         await page.evaluate( () => {
-            window.scrollBy(0, window.innerHeight);
+        window.scrollBy(0, window.innerHeight);
         });
 
         await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
-        await expect( {
-            selector: '.ast-separate-container .ast-single-related-posts-container ',
-            property: '',
-        } ).cssValueToBe(``); 
-
         await expect( {
             selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
             property: 'font-family',
@@ -63,11 +60,27 @@ describe( 'Post title font option under the customizer', () => {
             property: 'font-weight',
         } ).cssValueToBe(`${posttitlefont[ 'related-posts-title-font-weight' ] }`,
 		);
-
+        
+        await setBrowserViewport( 'large' );
         await expect( {
             selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
             property: 'font-size',
         } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].desktop }${posttitlefont['related-posts-title-font-size' ][ 'desktop-unit' ] }`,
+		);
+
+
+        await setBrowserViewport( 'medium' );
+        await expect( {
+            selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
+            property: 'font-size',
+        } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].tablet}${posttitlefont['related-posts-title-font-size' ][ 'tablet-unit' ] }`,
+		);
+
+        await setBrowserViewport( 'small' );
+        await expect( {
+            selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
+            property: 'font-size',
+        } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].mobile }${posttitlefont['related-posts-section-title-font-size' ][ 'mobile-unit' ] }`,
 		);
 		
     })

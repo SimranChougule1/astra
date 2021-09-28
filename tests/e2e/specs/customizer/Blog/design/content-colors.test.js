@@ -30,12 +30,7 @@ describe( 'Section Content color option under the customizer', () => {
             window.scrollBy(0, window.innerHeight);
         });
 
-        await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
-        await expect( {
-            selector: '.ast-separate-container .ast-single-related-posts-container ',
-            property: '',
-        } ).cssValueToBe(``); 
-
+        await page.waitForSelector('.ast-related-post-content .entry-header .ast-related-post-title a');
         await expect( {
             selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
             property: 'color',

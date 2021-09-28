@@ -33,10 +33,6 @@ describe( 'Enable related post option under the customizer', () => {
     });
 
     await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
-    await expect( {
-        selector: '.ast-separate-container .ast-single-related-posts-container ',
-        property: '',
-    } ).cssValueToBe(``); 
 
     await expect( {
         selector: '.ast-related-posts-title',

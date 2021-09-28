@@ -1,5 +1,7 @@
+import { setBrowserViewport } from '@wordpress/e2e-test-utils';
 import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
+
 describe( 'Section title font option under the customizer', () => {
 	it( 'Section title font option should apply correctly', async () => {
         const sectiontitlefont={
@@ -42,11 +44,6 @@ describe( 'Section title font option under the customizer', () => {
 
         await page.waitForSelector(' .ast-separate-container .ast-single-related-posts-container ');
         await expect( {
-            selector: '.ast-separate-container .ast-single-related-posts-container ',
-            property: '',
-        } ).cssValueToBe(``); 
-
-        await expect( {
             selector: '.ast-single-related-posts-container .ast-related-posts-title-section .ast-related-posts-title',
             property: 'font-family',
         } ).cssValueToBe(`${sectiontitlefont[ 'related-posts-section-title-font-family' ] }`,
@@ -64,10 +61,25 @@ describe( 'Section title font option under the customizer', () => {
         } ).cssValueToBe(`${sectiontitlefont[ 'related-posts-section-title-font-weight' ] }`,
 		);
 
+        await setBrowserViewport( 'large' );
         await expect( {
-            selector: '.ast-single-related-posts-container .ast-related-posts-title-section .ast-related-posts-title',
+            selector: '.ast-related-posts-title',
             property: 'font-size',
         } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].desktop }${sectiontitlefont['related-posts-section-title-font-size' ][ 'desktop-unit' ] }`,
+		);
+        
+        await setBrowserViewport( 'medium' );
+        await expect( {
+            selector: '.ast-related-posts-title',
+            property: 'font-size',
+        } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].tablet}${sectiontitlefont['related-posts-section-title-font-size' ][ 'tablet-unit' ] }`,
+		);
+
+        await setBrowserViewport( 'small' );
+        await expect( {
+            selector: '.ast-related-posts-title',
+            property: 'font-size',
+        } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].mobile }${sectiontitlefont['related-posts-section-title-font-size' ][ 'mobile-unit' ] }`,
 		);
 		
     })
