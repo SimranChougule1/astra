@@ -1,7 +1,7 @@
 import { createURL } from "@wordpress/e2e-test-utils";
 import { setCustomize } from '../../../utils/set-customize';
-describe(' Below footer column setting in customizer', () => {
-    it( 'column should apply correctly', async () => {
+describe(' Below footer border size setting in customizer', () => {
+    it( 'top border size should apply correctly', async () => {
 		const topborderSize = {
             'hbb-footer-separator': '50'
             
