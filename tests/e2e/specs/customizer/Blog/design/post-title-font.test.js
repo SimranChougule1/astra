@@ -1,5 +1,4 @@
-import { setBrowserViewport } from '@wordpress/e2e-test-utils';
-import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
+import { createURL, createNewPost, publishPost,setBrowserViewport } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
 describe( 'Post title font option under the customizer', () => {
 	it( 'Post title font option should apply correctly', async () => {
@@ -66,21 +65,6 @@ describe( 'Post title font option under the customizer', () => {
             selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
             property: 'font-size',
         } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].desktop }${posttitlefont['related-posts-title-font-size' ][ 'desktop-unit' ] }`,
-		);
-
-
-        await setBrowserViewport( 'medium' );
-        await expect( {
-            selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
-            property: 'font-size',
-        } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].tablet}${posttitlefont['related-posts-title-font-size' ][ 'tablet-unit' ] }`,
-		);
-
-        await setBrowserViewport( 'small' );
-        await expect( {
-            selector: '.ast-related-post-content .entry-header .ast-related-post-title a',
-            property: 'font-size',
-        } ).cssValueToBe(`${ posttitlefont[ 'related-posts-title-font-size' ].mobile }${posttitlefont['related-posts-section-title-font-size' ][ 'mobile-unit' ] }`,
 		);
 		
     })

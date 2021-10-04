@@ -1,5 +1,4 @@
-import { setBrowserViewport } from '@wordpress/e2e-test-utils';
-import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
+import { createURL, createNewPost, publishPost, setBrowserViewport  } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
 describe( 'Post/Page title font size option under the customizer', () => {
 	it( 'Post/Page title font size options should apply correctly', async () => {

@@ -1,5 +1,4 @@
-import { setBrowserViewport } from '@wordpress/e2e-test-utils';
-import { createURL,createNewPost,publishPost } from '@wordpress/e2e-test-utils';
+import { createURL, createNewPost, publishPost, setBrowserViewport } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../../utils/set-customize';
 describe( 'Meta font option under the customizer', () => {
 	it( 'Meta font option should apply correctly', async () => {
@@ -64,18 +63,6 @@ describe( 'Meta font option under the customizer', () => {
             selector: '.ast-related-post-content .entry-meta *',
             property: 'font-size',
         } ).cssValueToBe(`${ Metafont[ 'related-posts-meta-font-size' ].desktop }${Metafont['related-posts-meta-font-size' ][ 'desktop-unit' ] }`,);
-        
-        await setBrowserViewport( 'medium' );
-        await expect( {
-            selector: '.ast-related-post-content .entry-meta *',
-            property: 'font-size',
-        } ).cssValueToBe(`${ Metafont[ 'related-posts-meta-font-size' ].tablet }${Metafont['related-posts-meta-font-size' ][ 'tablet-unit' ] }`,);
-		
-        await setBrowserViewport( 'small' );
-        await expect( {
-            selector: '.ast-related-post-content .entry-meta *',
-            property: 'font-size',
-        } ).cssValueToBe(`${ Metafont[ 'related-posts-meta-font-size' ].mobile }${Metafont['related-posts-meta-font-size' ][ 'mobile-unit' ] }`,);
 		
     })
 });

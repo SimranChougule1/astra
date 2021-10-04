@@ -67,20 +67,5 @@ describe( 'Section title font option under the customizer', () => {
             property: 'font-size',
         } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].desktop }${sectiontitlefont['related-posts-section-title-font-size' ][ 'desktop-unit' ] }`,
 		);
-        
-        await setBrowserViewport( 'medium' );
-        await expect( {
-            selector: '.ast-related-posts-title',
-            property: 'font-size',
-        } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].tablet}${sectiontitlefont['related-posts-section-title-font-size' ][ 'tablet-unit' ] }`,
-		);
-
-        await setBrowserViewport( 'small' );
-        await expect( {
-            selector: '.ast-related-posts-title',
-            property: 'font-size',
-        } ).cssValueToBe(`${ sectiontitlefont[ 'related-posts-section-title-font-size' ].mobile }${sectiontitlefont['related-posts-section-title-font-size' ][ 'mobile-unit' ] }`,
-		);
-		
     })
 });
