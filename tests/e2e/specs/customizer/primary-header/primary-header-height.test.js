@@ -6,7 +6,7 @@ describe('Primary header height setting in customizer', () => {
             'hb-header-height': {
                 desktop: 90,
 				tablet: 90,
-				mobile: 50,
+				mobile: 90,
 				'desktop-unit': 'px',
 				'tablet-unit': 'px',
 				'mobile-unit': 'px',
@@ -28,6 +28,12 @@ describe('Primary header height setting in customizer', () => {
             selector: '.ast-primary-header-bar .site-primary-header-wrap',
             property: 'min-height',
         } ).cssValueToBe(`${ primaryheaderHeight[ 'hb-header-height' ].tablet }${ primaryheaderHeight[ 'hb-header-height' ][ 'tablet-unit' ] }`,
+		);
+
+        await expect( {
+            selector: '.ast-primary-header-bar .site-primary-header-wrap',
+            property: 'min-height',
+        } ).cssValueToBe(`${ primaryheaderHeight[ 'hb-header-height' ].mobile }${ primaryheaderHeight[ 'hb-header-height' ][ 'mobile-unit' ] }`,
 		);
     });
 })
