@@ -22,10 +22,10 @@ describe(' Below footer hide on desktop setting in customizer', () => {
     });
 
     it( 'hide on tablet should apply correctly', async () => {
-		const hideondesktop = {
+		const hideontablet = {
             'section-below-footer-builder-hide-tablet': 'none',
         };
-        await setCustomize( hideondesktop );
+        await setCustomize( hideontablet );
         await page.goto( createURL( '/' ), {
         waitUntil: 'networkidle0',
         } );
@@ -38,14 +38,14 @@ describe(' Below footer hide on desktop setting in customizer', () => {
         await expect( {
             selector: '.site-below-footer-wrap[data-section="section-below-footer-builder"]',
             property: 'display',
-        } ).cssValueToBe(`${ hideondesktop [ 'section-below-footer-builder-hide-tablet']}`,);
+        } ).cssValueToBe(`${ hideontablet [ 'section-below-footer-builder-hide-tablet']}`,);
     });
 
     it( 'hide on mobile should apply correctly', async () => {
-		const hideondesktop = {
+		const hideonmobile = {
             'section-below-footer-builder-hide-mobile': 'none',
         };
-        await setCustomize( hideondesktop );
+        await setCustomize( hideonmobile );
         await page.goto( createURL( '/' ), {
         waitUntil: 'networkidle0',
         } );
@@ -58,7 +58,7 @@ describe(' Below footer hide on desktop setting in customizer', () => {
         await expect( {
             selector: ' .site-below-footer-wrap[data-section="section-below-footer-builder"] ',
             property: 'display',
-        } ).cssValueToBe(`${ hideondesktop [ 'section-below-footer-builder-hide-mobile']}`,);
+        } ).cssValueToBe(`${ hideonmobile [ 'section-below-footer-builder-hide-mobile']}`,);
     });
 
 })
