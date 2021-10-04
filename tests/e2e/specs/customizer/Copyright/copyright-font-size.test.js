@@ -1,6 +1,5 @@
 import { createURL } from "@wordpress/e2e-test-utils";
 import { setCustomize } from '../../../../utils/set-customize';
-import { setBrowserViewport } from '@wordpress/e2e-test-utils';
 describe( 'copyright font size settings in the customizer', () => {
     it( 'copyright font size should apply correctly', async () => {
         const copyrightfontsize = {
@@ -25,20 +24,17 @@ describe( 'copyright font size settings in the customizer', () => {
             window.scrollBy(0, window.innerHeight);
         });
         await page.waitForSelector( '.ast-footer-copyright' );
-
-        await setBrowserViewport( 'large' );
+		
         await expect( {
             selector: '.ast-footer-copyright',
             property: 'font-size',
         } ).cssValueToBe(`${ copyrightfontsize [ 'font-size-section-footer-copyright' ].desktop }${ copyrightfontsize [ 'font-size-section-footer-copyright' ]['desktop-unit'] }`,);
 
-        await setBrowserViewport( 'medium' );
         await expect( {
             selector: '.ast-footer-copyright',
             property: 'font-size',
         } ).cssValueToBe(`${ copyrightfontsize [ 'font-size-section-footer-copyright' ].tablet }${ copyrightfontsize [ 'font-size-section-footer-copyright' ]['tablet-unit'] }`,);
 
-        await setBrowserViewport( 'small' );
         await expect( {
             selector: '.ast-footer-copyright',
             property: 'font-size',
