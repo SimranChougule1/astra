@@ -15,14 +15,14 @@ describe( 'Blog Archive post content option under the customizer', () => {
     } );
     await publishPost();
 
-    await page.goto( createURL( '/' ), {
+    await page.goto( createURL( '/author/admin' ), {
         waitUntil: 'networkidle0',
     } );
     await page.waitForSelector('.ast-separate-container .ast-article-post  ');
     await expect( {
         selector: '.ast-separate-container .ast-article-post  ',
         property: '',
-    } ).cssValueToBe(`${postcontent[ 'blog-post-content' ] }`); 
+    } ).cssValueToBe(``); 
     
 });
 
@@ -39,14 +39,14 @@ describe( 'Blog Archive post content option under the customizer', () => {
          } );
         await publishPost();
 
-        await page.goto( createURL( '/' ), {
+        await page.goto( createURL( '/author/admin' ), {
         waitUntil: 'networkidle0',
         } );
         await page.waitForSelector('.ast-separate-container .ast-article-post  ');
         await expect( {
             selector: '.ast-separate-container .ast-article-post  ',
             property: '',
-        } ).cssValueToBe(`${postcontent[ 'blog-post-content' ] }`);
+        } ).cssValueToBe(``);
     });
 
 })
