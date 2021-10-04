@@ -1,6 +1,5 @@
-import { createURL } from '@wordpress/e2e-test-utils';
+import { createURL, setBrowserViewport } from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../utils/set-customize';
-import { setBrowserViewport } from '@wordpress/e2e-test-utils';
     describe( 'copyright alignment settings in the customizer', () => {
         it( 'copyright alignment should apply correctly', async () => {
             const copyrightAlignment = {
