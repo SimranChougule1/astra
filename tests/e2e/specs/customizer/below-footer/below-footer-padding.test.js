@@ -10,7 +10,7 @@ describe(' Below footer padding setting in customizer', () => {
                     'bottom':'50',
                     'left':'50',
                 },
-                /*'tablet':{
+                'tablet':{
                     'top':'50',
                     'right':'50',
                     'bottom':'50',
@@ -21,10 +21,10 @@ describe(' Below footer padding setting in customizer', () => {
                     'right':'50',
                     'bottom':'50',
                     'left':'50',
-                },*/
+                },
                 'desktop-unit': 'px',
-                // 'tablet-unit': 'px',
-                // 'mobile-unit]':'px' ,
+                'tablet-unit': 'px',
+                'mobile-unit]':'px' ,
             }
         };
         await setCustomize( belowfooterpadding );
