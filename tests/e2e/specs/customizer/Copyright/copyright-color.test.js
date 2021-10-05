@@ -1,13 +1,11 @@
 import { createURL} from '@wordpress/e2e-test-utils';
 import { setCustomize } from '../../../utils/set-customize';
 describe( 'copyright color settings in the customizer', () => {
-    it( 'copyright text color should apply correctly', async () => {
-        const copyrightcolor = {
-
-            'footer-copyright-color':'rgb(248, 27, 27)',
-        };
-
-        await setCustomize( copyrightcolor );
+	it( 'copyright text color should apply correctly', async () => {
+		const copyrightcolor = {
+			'footer-copyright-color':'rgb(248, 27, 27)',
+		};
+		await setCustomize( copyrightcolor );
         await page.goto( createURL( '/' ), {
         waitUntil: 'networkidle0',
         } );
